@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "VLSProject_d4238a77"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}",
+            "vmArgs": "--module-path \"C:\\Program Files\\Java\\javafx-26_windows-x64_bin-sdk\\javafx-sdk-26.0.1\\lib\" --add-modules javafx.controls,javafx.fxml"
+        }
+    ]
+}
