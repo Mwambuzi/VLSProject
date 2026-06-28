@@ -1,7 +1,8 @@
+package client.admin;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -10,15 +11,18 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
-public class Main extends Application {
+public class GenresGUI extends Application {
 
 @Override
 public void start(Stage stage) {
 
     GridPane root = new GridPane();
-    root.setPadding(new Insets(20));
-    root.setHgap(10);
+
+    root.setMinSize(600, 400);
+    root.setPadding(new Insets(10, 10, 10, 10));
     root.setVgap(10);
+    root.setHgap(10);
+    root.setAlignment(Pos.CENTER);
 
     Label heading = new Label("Genres");
 
@@ -43,16 +47,19 @@ public void start(Stage stage) {
 
     root.add(btnRemove, 1, 4);
 
-    heading.setStyle("-fx-font-size:20px; -fx-font-weight:bold;");
+    heading.setStyle("-fx-font: normal bold 20px 'serif';");
+    lblName.setStyle("-fx-font: normal bold 18px 'serif';");
+    lblRegistered.setStyle("-fx-font: normal bold 18px 'serif';");
+
+    btnSave.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+    btnRemove.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
 
     btnSave.setPrefWidth(180);
     btnRemove.setPrefWidth(180);
 
-    root.setAlignment(Pos.CENTER);
-    root.setHgap(10);
-    root.setVgap(15);
+    root.setStyle("-fx-background-color: BEIGE;");
 
-    Scene scene = new Scene(root, 800, 600);
+    Scene scene = new Scene(root);
 
     stage.setTitle("Video Library System");
     stage.setScene(scene);

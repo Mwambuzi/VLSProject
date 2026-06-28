@@ -1,11 +1,40 @@
 {
     "version": "0.2.0",
     "configurations": [
-        
+        {
+            "type": "java",
+            "name": "RentalsGUI",
+            "request": "launch",
+            "mainClass": "client.admin.RentalsGUI",
+            "vmArgs": "--module-path \"C:\\Program Files\\Java\\javafx-26_windows-x64_bin-sdk\\javafx-sdk-26.0.1\\lib\" --add-modules javafx.controls,javafx.fxml -Dprism.order=sw"
+        },
+        {
+            "type": "java",
+            "name": "CustomersGUI",
+            "request": "launch",
+            "mainClass": "client.admin.CustomersGUI",
+            "vmArgs": "--module-path \"C:\\Program Files\\Java\\javafx-26_windows-x64_bin-sdk\\javafx-sdk-26.0.1\\lib\" --add-modules javafx.controls,javafx.fxml -Dprism.order=sw"
+        },
+        {
+            "type": "java",
+            "name": "Launch MoviesGUI",
+            "request": "launch",
+            "mainClass": "client.admin.MoviesGUI",
+            "vmArgs": "--module-path \"C:\\Program Files\\Java\\javafx-26_windows-x64_bin-sdk\\javafx-sdk-26.0.1\\lib\" --add-modules javafx.controls,javafx.fxml -Dprism.order=sw"
+        },
+        {
+            "type": "java",
+            "name": "Launch GenresGUI",
+            "request": "launch",
+            "mainClass": "client.admin.GenresGUI",
+            "vmArgs": "--module-path \"C:\\Program Files\\Java\\javafx-26_windows-x64_bin-sdk\\javafx-sdk-26.0.1\\lib\" --add-modules javafx.controls,javafx.fxml -Dprism.order=sw"
+        },
         {
             "type": "java",
             "name": "Launch Main",
             "request": "launch",
             "mainClass": "Main",
-"vmArgs": "--module-path \"C:\\Program Files\\Java\\javafx-26_windows-x64_bin-sdk\\javafx-sdk-26.0.1\\lib\" --add-modules javafx.controls,javafx.fxml -Dprism.order=sw" }    ]
+            "vmArgs": "--module-path \"C:\\Program Files\\Java\\javafx-26_windows-x64_bin-sdk\\javafx-sdk-26.0.1\\lib\" --add-modules javafx.controls,javafx.fxml -Dprism.order=sw"
+        }
+    ]
 }
