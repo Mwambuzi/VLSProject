@@ -16,13 +16,13 @@ public class GenresGUI extends Application {
 @Override
 public void start(Stage stage) {
 
-    GridPane root = new GridPane();
+    GridPane grid = new GridPane();
 
-    root.setMinSize(600, 400);
-    root.setPadding(new Insets(10, 10, 10, 10));
-    root.setVgap(10);
-    root.setHgap(10);
-    root.setAlignment(Pos.CENTER);
+    grid.setMinSize(600, 400);
+    grid.setPadding(new Insets(10, 10, 10, 10));
+    grid.setVgap(10);
+    grid.setHgap(10);
+    grid.setAlignment(Pos.CENTER);
 
     Label heading = new Label("Genres");
 
@@ -35,17 +35,17 @@ public void start(Stage stage) {
     Button btnSave = new Button("Save");
     Button btnRemove = new Button("Remove");
 
-    root.add(heading, 0, 0, 2, 1);
+    grid.add(heading, 0, 0, 2, 1);
 
-    root.add(lblName, 0, 1);
-    root.add(txtName, 1, 1);
+    grid.add(lblName, 0, 1);
+    grid.add(txtName, 1, 1);
 
-    root.add(btnSave, 1, 2);
+    grid.add(btnSave, 1, 2);
 
-    root.add(lblRegistered, 0, 3);
-    root.add(cmbRegistered, 1, 3);
+    grid.add(lblRegistered, 0, 3);
+    grid.add(cmbRegistered, 1, 3);
 
-    root.add(btnRemove, 1, 4);
+    grid.add(btnRemove, 1, 4);
 
     heading.setStyle("-fx-font: normal bold 20px 'serif';");
     lblName.setStyle("-fx-font: normal bold 18px 'serif';");
@@ -57,9 +57,9 @@ public void start(Stage stage) {
     btnSave.setPrefWidth(180);
     btnRemove.setPrefWidth(180);
 
-    root.setStyle("-fx-background-color: BEIGE;");
+    grid.setStyle("-fx-background-color: BROWN;");
 
-    Scene scene = new Scene(root);
+    Scene scene = new Scene(grid);
 
     stage.setTitle("Video Library System");
     stage.setScene(scene);

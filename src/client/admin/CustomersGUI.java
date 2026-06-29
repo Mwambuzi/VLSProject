@@ -16,13 +16,13 @@ public class CustomersGUI extends Application {
     @Override
     public void start(Stage stage) {
 
-        GridPane root = new GridPane();
+        GridPane grid = new GridPane();
 
-        root.setMinSize(600, 450);
-        root.setPadding(new Insets(10, 10, 10, 10));
-        root.setVgap(10);
-        root.setHgap(10);
-        root.setAlignment(Pos.CENTER);
+        grid.setMinSize(600, 450);
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setVgap(10);
+        grid.setHgap(10);
+        grid.setAlignment(Pos.CENTER);
 
         Label heading = new Label("Customers");
 
@@ -42,23 +42,23 @@ public class CustomersGUI extends Application {
 
         Button btnRemove = new Button("Remove");
 
-        root.add(heading, 0, 0, 2, 1);
+        grid.add(heading, 0, 0, 2, 1);
 
-        root.add(lblName, 0, 1);
-        root.add(txtName, 1, 1);
+        grid.add(lblName, 0, 1);
+        grid.add(txtName, 1, 1);
 
-        root.add(lblPhone, 0, 2);
-        root.add(txtPhone, 1, 2);
+        grid.add(lblPhone, 0, 2);
+        grid.add(txtPhone, 1, 2);
 
-        root.add(lblEmail, 0, 3);
-        root.add(txtEmail, 1, 3);
+        grid.add(lblEmail, 0, 3);
+        grid.add(txtEmail, 1, 3);
 
-        root.add(btnSave, 1, 4);
+        grid.add(btnSave, 1, 4);
 
-        root.add(lblRegistered, 0, 5);
-        root.add(cmbRegistered, 1, 5);
+        grid.add(lblRegistered, 0, 5);
+        grid.add(cmbRegistered, 1, 5);
 
-        root.add(btnRemove, 1, 6);
+        grid.add(btnRemove, 1, 6);
 
         heading.setStyle("-fx-font: normal bold 20px 'serif';");
         lblName.setStyle("-fx-font: normal bold 18px 'serif';");
@@ -72,9 +72,9 @@ public class CustomersGUI extends Application {
         btnSave.setPrefWidth(180);
         btnRemove.setPrefWidth(180);
 
-        root.setStyle("-fx-background-color: BEIGE;");
+        grid.setStyle("-fx-background-color: BROWN;");
 
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(grid);
 
         stage.setTitle("Video Library System");
         stage.setScene(scene);

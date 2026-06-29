@@ -15,13 +15,13 @@ public class RentalsGUI extends Application {
     @Override
     public void start(Stage stage) {
 
-        GridPane root = new GridPane();
+        GridPane grid = new GridPane();
 
-        root.setMinSize(650, 500);
-        root.setPadding(new Insets(10, 10, 10, 10));
-        root.setHgap(10);
-        root.setVgap(10);
-        root.setAlignment(Pos.CENTER);
+        grid.setMinSize(650, 500);
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setAlignment(Pos.CENTER);
 
         Label heading = new Label("Rentals");
 
@@ -44,26 +44,26 @@ public class RentalsGUI extends Application {
         Label lblReturned = new Label("Returned:");
         ComboBox<String> cmbReturned = new ComboBox<>();
 
-        root.add(heading, 0, 0, 2, 1);
+        grid.add(heading, 0, 0, 2, 1);
 
-        root.add(lblCustomer, 0, 1);
-        root.add(cmbCustomer, 1, 1);
+        grid.add(lblCustomer, 0, 1);
+        grid.add(cmbCustomer, 1, 1);
 
-        root.add(lblGenre, 0, 2);
-        root.add(cmbGenre, 1, 2);
+        grid.add(lblGenre, 0, 2);
+        grid.add(cmbGenre, 1, 2);
 
-        root.add(lblMovies, 0, 3);
-        root.add(cmbMovies, 1, 3);
+        grid.add(lblMovies, 0, 3);
+        grid.add(cmbMovies, 1, 3);
 
-        root.add(btnSave, 1, 4);
+        grid.add(btnSave, 1, 4);
 
-        root.add(lblBorrowed, 0, 5);
-        root.add(cmbBorrowed, 1, 5);
+        grid.add(lblBorrowed, 0, 5);
+        grid.add(cmbBorrowed, 1, 5);
 
-        root.add(btnReturn, 1, 6);
+        grid.add(btnReturn, 1, 6);
 
-        root.add(lblReturned, 0, 7);
-        root.add(cmbReturned, 1, 7);
+        grid.add(lblReturned, 0, 7);
+        grid.add(cmbReturned, 1, 7);
 
         heading.setStyle("-fx-font: normal bold 20px 'serif';");
 
@@ -79,9 +79,9 @@ public class RentalsGUI extends Application {
         btnSave.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         btnReturn.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
 
-        root.setStyle("-fx-background-color: BEIGE;");
+        grid.setStyle("-fx-background-color: BROWN;");
 
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(grid);
 
         stage.setTitle("Video Library System");
         stage.setScene(scene);
