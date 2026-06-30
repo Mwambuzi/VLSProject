@@ -10,7 +10,8 @@
         "c:\\Program Files\\Java\\javafx-26_windows-x64_bin-sdk\\javafx-sdk-26.0.1\\lib\\javafx.controls.jar",
         "c:\\Program Files\\Java\\javafx-26_windows-x64_bin-sdk\\javafx-sdk-26.0.1\\lib\\javafx.graphics.jar",
         "c:\\Program Files\\Java\\javafx-26_windows-x64_bin-sdk\\javafx-sdk-26.0.1\\lib\\javafx-swt.jar",
-        "c:\\Program Files\\Java\\javafx-26_windows-x64_bin-sdk\\javafx-sdk-26.0.1\\lib\\jdk.jsobject.jar"
+        "c:\\Program Files\\Java\\javafx-26_windows-x64_bin-sdk\\javafx-sdk-26.0.1\\lib\\jdk.jsobject.jar",
+        "lib/mysql-connector-j-9.7.0.jar"
     ],
     "java.project.sourcePaths": [
         "src"

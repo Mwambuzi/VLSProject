@@ -3,6 +3,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "RMITest",
+            "request": "launch",
+            "mainClass": "client.RMITest",
+            "projectName": "VLSProject_d4fc31e2"
+        },
+        {
+            "type": "java",
+            "name": "VideoLibraryServer",
+            "request": "launch",
+            "mainClass": "server.VideoLibraryServer",
+            "projectName": "VLSProject_d4fc31e2"
+        },
+        {
+            "type": "java",
             "name": "RentalsGUI",
             "request": "launch",
             "mainClass": "client.admin.RentalsGUI",

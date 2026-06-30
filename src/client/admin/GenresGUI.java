@@ -10,6 +10,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
+import shared.model.Genre;
+import shared.remote.VideoLibraryService;
 
 public class GenresGUI extends Application {
 
@@ -35,29 +40,83 @@ public void start(Stage stage) {
     Button btnSave = new Button("Save");
     Button btnRemove = new Button("Remove");
 
-    grid.add(heading, 0, 0, 2, 1);
+    VideoLibraryService service = null;
 
-    grid.add(lblName, 0, 1);
-    grid.add(txtName, 1, 1);
+try {
 
-    grid.add(btnSave, 1, 2);
+    Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+    service = (VideoLibraryService) registry.lookup("VideoLibraryService");
 
-    grid.add(lblRegistered, 0, 3);
-    grid.add(cmbRegistered, 1, 3);
+} catch (Exception e) {
+    e.printStackTrace();
+}
 
-    grid.add(btnRemove, 1, 4);
+grid.add(heading, 0, 0, 2, 1);
 
-    heading.setStyle("-fx-font: normal bold 20px 'serif';");
-    lblName.setStyle("-fx-font: normal bold 18px 'serif';");
-    lblRegistered.setStyle("-fx-font: normal bold 18px 'serif';");
+grid.add(lblName, 0, 1);
+grid.add(txtName, 1, 1);
 
-    btnSave.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-    btnRemove.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+grid.add(btnSave, 1, 2);
 
-    btnSave.setPrefWidth(180);
-    btnRemove.setPrefWidth(180);
+grid.add(lblRegistered, 0, 3);
+grid.add(cmbRegistered, 1, 3);
 
-    grid.setStyle("-fx-background-color: BROWN;");
+grid.add(btnRemove, 1, 4);
+
+heading.setStyle("-fx-font: normal bold 20px 'serif';");
+lblName.setStyle("-fx-font: normal bold 18px 'serif';");
+lblRegistered.setStyle("-fx-font: normal bold 18px 'serif';");
+
+btnSave.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+btnRemove.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+
+btnSave.setPrefWidth(180);
+btnRemove.setPrefWidth(180);
+
+grid.setStyle("-fx-background-color: BROWN;");
+
+VideoLibraryService finalService = service;
+
+// Load genres when the window opens
+try {
+
+    cmbRegistered.getItems().clear();
+
+    for (Genre genre : finalService.getGenres()) {
+        cmbRegistered.getItems().add(genre.getGenre());
+    }
+
+} catch (Exception e) {
+    e.printStackTrace();
+}
+
+// Save button
+btnSave.setOnAction(e -> {
+
+    try {
+
+        Genre genre = new Genre(
+                0,
+                txtName.getText(),
+                true
+        );
+
+        finalService.saveGenre(genre);
+
+        txtName.clear();
+
+        // Refresh the ComboBox
+        cmbRegistered.getItems().clear();
+
+        for (Genre g : finalService.getGenres()) {
+            cmbRegistered.getItems().add(g.getGenre());
+        }
+
+    } catch (Exception ex) {
+        ex.printStackTrace();
+    }
+
+});
 
     Scene scene = new Scene(grid);
 

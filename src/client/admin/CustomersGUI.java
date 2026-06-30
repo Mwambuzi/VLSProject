@@ -11,6 +11,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
+import shared.model.Customer;
+import shared.remote.VideoLibraryService;
+
 public class CustomersGUI extends Application {
 
     @Override
@@ -42,6 +48,21 @@ public class CustomersGUI extends Application {
 
         Button btnRemove = new Button("Remove");
 
+        // Connect to the RMI Server
+        VideoLibraryService service = null;
+
+        try {
+
+            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+            service = (VideoLibraryService) registry.lookup("VideoLibraryService");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        VideoLibraryService finalService = service;
+
+        // Layout
         grid.add(heading, 0, 0, 2, 1);
 
         grid.add(lblName, 0, 1);
@@ -60,6 +81,7 @@ public class CustomersGUI extends Application {
 
         grid.add(btnRemove, 1, 6);
 
+        // Styles
         heading.setStyle("-fx-font: normal bold 20px 'serif';");
         lblName.setStyle("-fx-font: normal bold 18px 'serif';");
         lblPhone.setStyle("-fx-font: normal bold 18px 'serif';");
@@ -73,6 +95,98 @@ public class CustomersGUI extends Application {
         btnRemove.setPrefWidth(180);
 
         grid.setStyle("-fx-background-color: BROWN;");
+
+        // Load registered customers
+        try {
+
+            cmbRegistered.getItems().clear();
+
+            for (Customer customer : finalService.getCustomers()) {
+
+                cmbRegistered.getItems().add(customer.getFullname());
+
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+        // Save customer
+        btnSave.setOnAction(e -> {
+
+            try {
+
+                Customer customer = new Customer(
+                        0,
+                        txtName.getText(),
+                        txtPhone.getText(),
+                        txtEmail.getText(),
+                        true
+                );
+
+                finalService.saveCustomer(customer);
+
+                txtName.clear();
+                txtPhone.clear();
+                txtEmail.clear();
+
+                cmbRegistered.getItems().clear();
+
+                for (Customer c : finalService.getCustomers()) {
+
+                    cmbRegistered.getItems().add(c.getFullname());
+
+                }
+
+            } catch (Exception ex) {
+
+                ex.printStackTrace();
+
+            }
+
+        });
+
+        // Remove customer
+        btnRemove.setOnAction(e -> {
+
+            try {
+
+                Customer selectedCustomer = null;
+
+                for (Customer customer : finalService.getCustomers()) {
+
+                    if (customer.getFullname().equals(cmbRegistered.getValue())) {
+
+                        selectedCustomer = customer;
+                        break;
+
+                    }
+
+                }
+
+                if (selectedCustomer != null) {
+
+                    finalService.removeCustomer(selectedCustomer.getId());
+
+                    cmbRegistered.getItems().clear();
+
+                    for (Customer customer : finalService.getCustomers()) {
+
+                        cmbRegistered.getItems().add(customer.getFullname());
+
+                    }
+
+                }
+
+            } catch (Exception ex) {
+
+                ex.printStackTrace();
+
+            }
+
+        });
 
         Scene scene = new Scene(grid);
 
